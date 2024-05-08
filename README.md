@@ -1,6 +1,6 @@
 # makan_yuk
 
-A new Flutter project.
+MakanYuk merupakan aplikasi catering mobile
 
 ## Getting Started
 
