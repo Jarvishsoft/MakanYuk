@@ -1,6 +1,7 @@
 import 'package:coupon_uikit/coupon_uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:makan_yuk/cloud/firepage.dart';
 import 'package:makan_yuk/constant/color_const.dart';
 import 'package:makan_yuk/ui/detail_menu.dart';
 import 'package:makan_yuk/ui/gratong.dart';
@@ -156,7 +157,7 @@ class _HomeMakanState extends State<HomeMakan> {
                             ),
                             InkWell(
                               onTap: () {
-                                // Get.to(const DaftarPesanan());
+                                Get.to(FirePage());
                               },
                               child: MiniMenuMakan(
                                 iconMenu: Icons.schedule_outlined,
@@ -181,7 +182,7 @@ class _HomeMakanState extends State<HomeMakan> {
                         const Padding(
                           padding: EdgeInsets.all(12),
                           child: CouponCard(
-                            width: 400,
+                            width: 500,
                             shadow: Shadow(
                               color: Colors.grey,
                               offset: Offset(1, 1),

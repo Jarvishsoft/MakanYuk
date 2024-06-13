@@ -20,6 +20,7 @@ class _LoginMakanState extends State<LoginMakan> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailConLog = TextEditingController();
   final TextEditingController passConLog = TextEditingController();
+  bool passInvisible = false;
 
   @override
   void dispose() {
@@ -178,17 +179,45 @@ class _LoginMakanState extends State<LoginMakan> {
                                     ),
                                   ],
                                 ),
-                                FormMakan(
-                                  controllerForm: passConLog,
-                                  textForm: 'Password',
-                                  hintForm: 'Enter your password here',
-                                  iconForm: Icons.lock_outline,
+                                const SizedBox(height: 5),
+                                TextFormField(
+                                  controller: passConLog,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Password cannot be empty!';
                                     }
                                     return null;
                                   },
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter your password here',
+                                    hintStyle: const TextStyle(
+                                      fontSize: 13,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    prefixIconConstraints: BoxConstraints(
+                                      minWidth: 55,
+                                    ),
+                                    prefixIcon: Icon(
+                                      Icons.lock_outline,
+                                      color: const Color(0xFF037283),
+                                    ),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(passInvisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                      onPressed: () {
+                                        setState(() {
+                                          passInvisible = !passInvisible;
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  obscureText: !passInvisible,
                                 ),
                                 const SizedBox(height: 20),
                                 ButtonMakan(

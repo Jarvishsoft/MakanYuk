@@ -207,18 +207,8 @@ class _DetailMenuMakanState extends State<DetailMenuMakan> {
                   //   ],
                   // ),
                   const SizedBox(height: 120),
-                  Text('hahaha'),
                 ],
               ),
-            ),
-            Stack(
-              children: [
-                Container(
-                  color: basicColor,
-                  height: 30,
-                  width: double.infinity,
-                ),
-              ],
             ),
           ],
         ),

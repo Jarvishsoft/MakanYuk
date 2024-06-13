@@ -1,6 +1,7 @@
 import 'package:coupon_uikit/coupon_uikit.dart';
 import 'package:flutter/material.dart';
 import 'package:makan_yuk/constant/color_const.dart';
+import 'package:makan_yuk/widgets/card_pemesanan.dart';
 
 class DaftarPesanan extends StatefulWidget {
   const DaftarPesanan({super.key});
@@ -75,6 +76,36 @@ class _DaftarPesananState extends State<DaftarPesanan> {
                     _buildMenuButton(2, 'Cemilan'),
                   ],
                 ),
+                const SizedBox(height: 20),
+                PemesananCard(
+                    titleCard: 'Padang Payakumbuah',
+                    jmlMenu: '3 menu',
+                    total: '45.000',
+                    descCard: 'Masakan Padang dengan bumbu khas Nusantara',
+                    imageUrl: 'assets/padang_detail.png'),
+                const SizedBox(height: 20),
+                PemesananCard(
+                    titleCard: 'Zuppa Soup',
+                    jmlMenu: '1 menu',
+                    total: '25.000',
+                    descCard:
+                        'Zuppa Soup dengan irisan jagung dan sosis premium',
+                    imageUrl: 'assets/zuppa.png'),
+                const SizedBox(height: 20),
+                PemesananCard(
+                    titleCard: 'Rendang',
+                    jmlMenu: '3 menu',
+                    total: '15.000',
+                    descCard:
+                        'MRendang dengan bumbu khas Padang menjadikan aroma dan rasa lebih terjamin enaknya',
+                    imageUrl: 'assets/padang_detail.png'),
+                const SizedBox(height: 20),
+                PemesananCard(
+                    titleCard: 'Padang Payakumbuah',
+                    jmlMenu: '3 menu',
+                    total: '45.000',
+                    descCard: 'Masakan Padang dengan bumbu khas Nusantara',
+                    imageUrl: 'assets/padang_detail.png'),
                 const SizedBox(height: 20),
                 Image.asset(
                   'assets/padang_detail.png',
