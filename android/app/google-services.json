@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "789248620262",
+    "project_id": "tubes-ppb-ec70f",
+    "storage_bucket": "tubes-ppb-ec70f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789248620262:android:7f8ce8cc498e0256772d27",
+        "android_client_info": {
+          "package_name": "com.example.makan_yuk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEcdwnY86EdNrMpWObRrfejkwRp7TGp7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

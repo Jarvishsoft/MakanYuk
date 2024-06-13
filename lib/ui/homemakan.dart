@@ -1,13 +1,17 @@
-import 'package:flutter/cupertino.dart';
+import 'package:coupon_uikit/coupon_uikit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:makan_yuk/bottomnavbar.dart';
+import 'package:get/get.dart';
 import 'package:makan_yuk/constant/color_const.dart';
+import 'package:makan_yuk/ui/detail_menu.dart';
+import 'package:makan_yuk/ui/gratong.dart';
 import 'package:makan_yuk/widgets/card_menu_terdekat.dart';
+import 'package:makan_yuk/widgets/card_moment.dart';
 import 'package:makan_yuk/widgets/menu_kuliner.dart';
 
 import 'package:makan_yuk/widgets/minimenu_makan.dart';
 import 'package:makan_yuk/widgets/searchbar_makan.dart';
+
+import '../bottomnavbar/pesanan.dart';
 
 class HomeMakan extends StatefulWidget {
   const HomeMakan({super.key});
@@ -62,7 +66,7 @@ class _HomeMakanState extends State<HomeMakan> {
                       const SizedBox(width: 15),
                       Column(
                         children: [
-                          SizedBox(width: 10),
+                          const SizedBox(width: 10),
                           Text(
                             'Halo, Nurhidayat',
                             style: TextStyle(
@@ -101,11 +105,12 @@ class _HomeMakanState extends State<HomeMakan> {
               children: [
                 Container(
                   color: basicColor,
-                  height: 100,
+                  height: MediaQuery.of(context).size.height,
                   width: double.infinity,
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height,
+                  height: 1080,
+                  // MediaQuery.of(context).size.height,
                   width: double.infinity,
                   constraints: BoxConstraints(
                     minHeight: MediaQuery.of(context).size.height,
@@ -131,7 +136,7 @@ class _HomeMakanState extends State<HomeMakan> {
                           children: [
                             InkWell(
                               onTap: () {
-                                // Get.to();
+                                Get.to(const GratisOngkir());
                               },
                               child: MiniMenuMakan(
                                 iconMenu: Icons.motorcycle_outlined,
@@ -141,7 +146,7 @@ class _HomeMakanState extends State<HomeMakan> {
                             ),
                             InkWell(
                               onTap: () {
-                                // Get.to();
+                                // Get.to(CobaCoba());
                               },
                               child: MiniMenuMakan(
                                 iconMenu: Icons.percent_outlined,
@@ -151,7 +156,7 @@ class _HomeMakanState extends State<HomeMakan> {
                             ),
                             InkWell(
                               onTap: () {
-                                // Get.to();
+                                // Get.to(const DaftarPesanan());
                               },
                               child: MiniMenuMakan(
                                 iconMenu: Icons.schedule_outlined,
@@ -172,7 +177,80 @@ class _HomeMakanState extends State<HomeMakan> {
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         ),
-                        const SizedBox(height: 25),
+                        const SizedBox(height: 10),
+                        const Padding(
+                          padding: EdgeInsets.all(12),
+                          child: CouponCard(
+                            width: 400,
+                            shadow: Shadow(
+                              color: Colors.grey,
+                              offset: Offset(1, 1),
+                              blurRadius: 5,
+                            ),
+                            // clockwise: true,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFDAF5FA),
+                            ),
+                            borderRadius: 15,
+                            border: BorderSide(
+                              color: Colors.transparent,
+                              width: 2,
+                            ),
+                            curveAxis: Axis.vertical,
+                            curveRadius: 25,
+                            curvePosition: 50,
+                            height: 100,
+                            firstChild: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.percent_rounded),
+                                  // Text('hallo'),
+                                ],
+                              ),
+                            ),
+                            secondChild: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 3),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Diskon 40%',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Divider(),
+                                  Text(
+                                    'Pengguna Setia',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  SizedBox(height: 5),
+                                  Row(
+                                    children: [
+                                      Icon(Icons
+                                          .perm_device_information_rounded),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        'Hangus 30 Juni 2024',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 15),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -182,7 +260,9 @@ class _HomeMakanState extends State<HomeMakan> {
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(DetailMenuMakan());
+                              },
                               child: Text(
                                 'Lihat Semua',
                                 style: TextStyle(
@@ -198,8 +278,9 @@ class _HomeMakanState extends State<HomeMakan> {
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         ),
-                        const SizedBox(height: 25),
-                        Expanded(
+                        const SizedBox(height: 20),
+                        SizedBox(
+                          height: 125,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
@@ -208,8 +289,8 @@ class _HomeMakanState extends State<HomeMakan> {
                                   MenuKuliner(
                                     textMenu: 'Padang',
                                     imageKuliner: ClipOval(
-                                      child: Image.asset('assets/sunda.png'),
                                       clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      child: Image.asset('assets/sunda.png'),
                                     ),
                                   ),
                                 ],
@@ -246,13 +327,9 @@ class _HomeMakanState extends State<HomeMakan> {
                                   child: Image.asset('assets/padang.png'),
                                 ),
                               ),
-                              Spacer(),
-                              SizedBox(height: 10),
                             ],
                           ),
                         ),
-
-                        // SizedBox(height: 0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -262,7 +339,9 @@ class _HomeMakanState extends State<HomeMakan> {
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(DetailMenuMakan());
+                              },
                               child: Text(
                                 'Lihat Semua',
                                 style: TextStyle(
@@ -278,36 +357,84 @@ class _HomeMakanState extends State<HomeMakan> {
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         ),
-                        Expanded(
+                        const SizedBox(height: 5),
+                        SizedBox(
+                          height: 200,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
                               Row(
                                 children: [
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Rendang',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/rendangminang.png',
+                                      scale: 1.6,
+                                      width: 100,
+                                      height: 114,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  // const SizedBox(width: 10),
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Nasi Padang',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/naspad.png',
+                                      scale: 1.6,
+                                      width: 120,
+                                      height: 114,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  // const SizedBox(width: 10),
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Zuppa Soup',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/zuppa.png',
+                                      scale: 1.6,
+                                      width: 100,
+                                      height: 114,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  // const SizedBox(width: 10),
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Rendang',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/makassar.png',
+                                      scale: 0.5,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  // const SizedBox(width: 10),
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Paket Nasi Padang',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/sunda.png',
+                                      scale: 0.5,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  // const SizedBox(width: 10),
                                   CardMenuTerdekatMoment(
-                                      titleCard: 'Rendang',
-                                      subtitleCard: 'RM Pagi Sore '),
+                                    titleCard: 'Zuppa Soup',
+                                    subtitleCard: 'RM Pagi Sore ',
+                                    lateImage: Image.asset(
+                                      'assets/padang.png',
+                                      scale: 0.5,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
                           ),
                         ),
-
                         const SizedBox(height: 25),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -318,7 +445,9 @@ class _HomeMakanState extends State<HomeMakan> {
                                   fontSize: 16, fontWeight: FontWeight.w500),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.to(DetailMenuMakan());
+                              },
                               child: Text(
                                 'Lihat Semua',
                                 style: TextStyle(
@@ -334,33 +463,78 @@ class _HomeMakanState extends State<HomeMakan> {
                           style: TextStyle(
                               fontSize: 12, fontWeight: FontWeight.w400),
                         ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: 170,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              MomentCard(
+                                  titleCard: 'Pernikahan',
+                                  imageUrl: 'assets/pernikahan.png'),
+                              MomentCard(
+                                  titleCard: 'Syukuran',
+                                  imageUrl: 'assets/syukuran.png'),
+                              MomentCard(
+                                  titleCard: 'Ulang Tahun',
+                                  imageUrl: 'assets/ulangtahun.png'),
+                              MomentCard(
+                                  titleCard: 'Pernikahan',
+                                  imageUrl: 'assets/pernikahan.png'),
+                              MomentCard(
+                                  titleCard: 'Syukuran',
+                                  imageUrl: 'assets/syukuran.png'),
+                            ],
+                          ),
+                        ),
+                        // Card(
+                        //   child: Column(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.all(8.0),
+                        //         child: ClipRRect(
+                        //           borderRadius: BorderRadius.circular(10),
+                        //           child: Image.asset(
+                        //             'assets/jawa.png',
+                        //             scale: 0.5,
+                        //             fit: BoxFit.fill,
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       Padding(
+                        //         padding: const EdgeInsets.all(8.0),
+                        //         child: Column(
+                        //           children: [
+                        //             Text('Rendang'),
+                        //             Text('RM Pagi Sore'),
+                        //           ],
+                        //         ),
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                         const SizedBox(height: 25),
-                        const Text(
-                          'Rekomendasi',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w500),
-                        ),
-                        const Text(
-                          'Rekomendasi orang-orang di sekitarmu',
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w400),
-                        ),
-
+                        // const Text(
+                        //   'Rekomendasi',
+                        //   style: TextStyle(
+                        //       fontSize: 16, fontWeight: FontWeight.w500),
+                        // ),
+                        // const Text(
+                        //   'Rekomendasi orang-orang di sekitarmu',
+                        //   style: TextStyle(
+                        //       fontSize: 12, fontWeight: FontWeight.w400),
+                        // ),
                         // const SizedBox(height: 25),
-                        // Spacer(),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 25),
-                // Spacer(),
               ],
             ),
             // Text('ini adalah text3'),
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBarMenu(),
     );
   }
 }

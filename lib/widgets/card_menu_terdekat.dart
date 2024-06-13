@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CardMenuTerdekatMoment extends StatelessWidget {
   final String titleCard;
   final String subtitleCard;
-  Widget? lateImage;
+  Image? lateImage;
 
   CardMenuTerdekatMoment(
       {super.key,
@@ -14,50 +14,42 @@ class CardMenuTerdekatMoment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Card(
-          elevation: 10,
-          // shape: Border.symmetric(),
-          color: Colors.grey[300],
-          shadowColor: Colors.black,
-
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+    return Card(
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      margin: const EdgeInsets.all(10),
+      elevation: 5,
+      color: Colors.white,
+      shadowColor: Colors.black,
+      surfaceTintColor: Colors.white,
+      // semanticContainer: true,
+      // margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      // borderOnForeground: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: lateImage,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: <Widget>[
-                Text(titleCard),
-                Text(subtitleCard),
+              children: [
+                Text(
+                  titleCard,
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  subtitleCard,
+                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                ),
               ],
             ),
           ),
-        )
-        // Container(
-        //   width: 25,
-        //   height: 50,
-        //   // margin: EdgeInsets.only(
-        //   //   left: 5,
-        //   //   right: 5,
-        //   // ),
-        //   decoration: BoxDecoration(
-        //     color: Colors.grey,
-        //     borderRadius: BorderRadius.circular(10),
-        //     border: Border.all(color: white),
-        //   ),
-        //   child: Column(
-        //     children: [
-        //       Text(titleCard,
-        //           style:
-        //               const TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
-        //       Text(titleCard,
-        //           style:
-        //               const TextStyle(fontSize: 12, fontWeight: FontWeight.w300)),
-        //               Card(
-
-        //               ),
-        //     ],
-        //   ),
-        // ),
-        );
+        ],
+      ),
+    );
   }
 }

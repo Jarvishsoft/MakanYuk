@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class FormMakan extends StatelessWidget {
+class FormMakan extends StatefulWidget {
   String textForm;
   String hintForm;
   IconData iconForm;
@@ -18,32 +18,38 @@ class FormMakan extends StatelessWidget {
   });
 
   @override
+  State<FormMakan> createState() => _FormMakanState();
+}
+
+class _FormMakanState extends State<FormMakan> {
+  // bool passInvisible = false;
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: TextFormField(
-        controller: controllerForm,
-        validator: validator,
-        decoration: InputDecoration(
-          hintText: hintForm,
-          hintStyle: const TextStyle(
-            fontSize: 13,
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: TextFormField(
+          controller: widget.controllerForm,
+          validator: widget.validator,
+          decoration: InputDecoration(
+            hintText: widget.hintForm,
+            hintStyle: const TextStyle(
+              fontSize: 13,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            prefixIconConstraints: BoxConstraints(
+              minWidth: 55,
+            ),
+            prefixIcon: Icon(
+              widget.iconForm,
+              color: const Color(0xFF037283),
+            ),
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          prefixIconConstraints: BoxConstraints(
-            minWidth: 55,
-          ),
-          prefixIcon: Icon(
-            iconForm,
-            color: const Color(0xFF037283),
-          ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -1,66 +1,55 @@
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class CardMenuTerdekatMoment extends StatelessWidget {
+class MomentCard extends StatelessWidget {
   final String titleCard;
-  final String subtitleCard;
+  final String imageUrl;
   Widget? lateImage;
 
-  CardMenuTerdekatMoment(
+  MomentCard(
       {super.key,
       this.lateImage,
       required this.titleCard,
-      required this.subtitleCard});
+      required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Card(
-          elevation: 10,
-          // shape: Border.symmetric(),
-          color: Colors.grey[300],
-          shadowColor: Colors.black,
-          // margin: EdgeInsets.symmetric(
-          //   horizontal: 10,
-          //   vertical: 5,
-          // ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Column(
-              children: <Widget>[
-                Text(titleCard),
-                Text(subtitleCard),
-              ],
+    return Card(
+      // margin: const EdgeInsets.all(10),
+      shadowColor: Colors.black,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      semanticContainer: true,
+      color: Colors.white,
+      surfaceTintColor: Colors.white,
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.fill,
+              height: 105,
+              width: 110,
             ),
           ),
-        )
-        // Container(
-        //   width: 25,
-        //   height: 50,
-        //   // margin: EdgeInsets.only(
-        //   //   left: 5,
-        //   //   right: 5,
-        //   // ),
-        //   decoration: BoxDecoration(
-        //     color: Colors.grey,
-        //     borderRadius: BorderRadius.circular(10),
-        //     border: Border.all(color: white),
-        //   ),
-        //   child: Column(
-        //     children: [
-        //       Text(titleCard,
-        //           style:
-        //               const TextStyle(fontSize: 14, fontWeight: FontWeight.w400)),
-        //       Text(titleCard,
-        //           style:
-        //               const TextStyle(fontSize: 12, fontWeight: FontWeight.w300)),
-        //               Card(
-
-        //               ),
-        //     ],
-        //   ),
-        // ),
-        );
+          const SizedBox(height: 5),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              titleCard,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
